@@ -4,7 +4,6 @@ var Queue = function() {
   var someInstance = {
   	count: 0,
 	index: 0,
-	temp: {},
 	storage: {},
   };
   _.extend(someInstance, queueMethods);
@@ -17,7 +16,6 @@ var queueMethods = {
 		this.count++;
 		this.index++;
 		this.storage[this.index] = val;
-		//this.temp[this.index] = this.index;
 	},
 	dequeue: function() {
 		if (this.count > 0) {
@@ -26,7 +24,6 @@ var queueMethods = {
 		var delKey = [Object.keys(this.storage)[0]];
 		var ans = this.storage[delKey]
 		delete this.storage[delKey];
-		//delete this.temp[delKey];
 		return ans;
 
 	},
