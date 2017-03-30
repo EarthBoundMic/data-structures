@@ -1,34 +1,44 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
   this.count = 0;
   this.storage = {};
 };
 
-Stack.prototype = {
-	push: function(val) {
-		this.storage[count] = val;
-		this.count++;
-	},
-	pop: function() {
-		this.count--;
-		var ans = 
-	},
-	size: function(){
-		return this.count;
-	}
+// Stack.prototype = {
+// 	push: function(val) {
+// 		this.storage[this.count] = val;
+// 		this.count++;
+// 	},
+// 	pop: function() {
+// 		if (this.count > 0) {
+// 			this.count--;	
+// 		}
+// 		var ans = this.storage[this.count];
+// 		delete this.storage[this.count];
+// 		return ans;
+// 	},
+// 	size: function(){
+// 		return this.count;
+// 	}
+// }
+
+Stack.prototype.push = function(value) {
+	this.storage[this.count] = value;
+	this.count++;
 }
 
+Stack.prototype.pop = function() {
+	if (this.count > 0) {
+		this.count--;
+	}
+	var result = this.storage[this.count];
+	delete this.storage[this.count];
+	return result;
+}
 
-// var stackMethods = new Stack();
-// stackMethods.push = function(val) {
+Stack.prototype.size = function() {
+	return this.count;
+}
 
-// }
+var myStack = new Stack();
 
-// stackMethods.pop = function() {
 
-// }
-
-// stackMethods.size = function() {
-
-// }
