@@ -1,24 +1,40 @@
-var LinkedList = function() {
+var LinkedList = function() { //linkedList = LinkedList()
   var list = {};
   list.head = null;
   list.tail = null;
 
-  list.addToTail = function(value) {
-    //call Node(value)
-    //if (list.tail !== null) list.tail = node.value
-    //list.tail = node.value
-    //leave the node.next as null
-    if (this.tail !== null) {
-      this.list = Object.create(Node(value));
-      this.list.next = 
-      
+  list.addToTail = function(value) {  //aka enqueue
+    var newNode = Node(value);
+    if(this.head === null) {
+      this.head = newNode;
     }
+    //this.tail.next = newNode;
+    if (this.tail !== null) {
+      this.tail.next = newNode;
+    }
+    this.tail = newNode;
   };
 
-  list.removeHead = function() {
+  list.removeHead = function() { 
+    var ans = this.head.value;
+    this.head = this.head.next;
+    return ans;
   };
 
-  list.contains = function(target) {
+  list.contains = function(target) { 
+    var current = this.head;
+    var cond = true;
+    while (cond) {
+      if (current.value === target) {
+        console.log('isTrue');
+        return true;
+      } else if (current.next === null){
+        cond = false;
+      } else {
+        current = current.next;
+      }
+    }
+    return false;
   };
 
   return list;
