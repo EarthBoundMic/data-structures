@@ -26,6 +26,6 @@ Queue.prototype.size = function() {
   return this.count;
 };
 
-var newInstance = new Queue;
+var newInstance = new Queue();
 
 
