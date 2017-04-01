@@ -1,40 +1,40 @@
-var LinkedList = function() { //linkedList = LinkedList()
+var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
+  
 
-  list.addToTail = function(value) {  //aka enqueue
-    var newNode = Node(value);
-    if(this.head === null) {
-      this.head = newNode;
+  list.addToTail = function(value) {
+    var node = Node(value);
+    if (list.head === null) {
+      list.head = node;
+      list.tail = node;
+      
     }
-    //this.tail.next = newNode;
-    if (this.tail !== null) {
-      this.tail.next = newNode;
+    else {
+      list.tail = node;
+      list.tail.next = node;
+      
     }
-    this.tail = newNode;
   };
 
-  list.removeHead = function() { 
-    var ans = this.head.value;
-    this.head = this.head.next;
-    return ans;
+  list.removeHead = function() {
+    var removed = list.head.value;
+    list.head = list.tail;
+    list.tail = list.tail.next;
+    return removed;
   };
 
-  list.contains = function(target) { 
-    var current = this.head;
-    var cond = true;
-    while (cond) {
-      if (current.value === target) {
-        console.log('isTrue');
-        return true;
-      } else if (current.next === null){
-        cond = false;
-      } else {
-        current = current.next;
+  list.contains = function(target) {
+    var doesContain = false;
+    _.each(list, function(item) {
+      for (var prop in item) {
+        if (item[prop] === target) {
+          doesContain = true;
+        }
       }
-    }
-    return false;
+    });
+    return doesContain; 
   };
 
   return list;
@@ -45,7 +45,6 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
-
   return node;
 };
 
