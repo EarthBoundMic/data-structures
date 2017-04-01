@@ -15,31 +15,23 @@ treeMethods.addChild = function(value) {
   this.children.push(newChild);
 };
 
-var newTree = Tree(5)
-newTree.addChild(2)
-console.log(newTree)
-
 treeMethods.contains = function(target) {
-  //loop through this.children array
-  //if find return else recursive loop
-  // for (var i = 0; i < this.children.length; i++) {
-  //   this.contains(this.children[i]);
   if (this.value === target) {
+    // console.log('isTrue ' + target)
     return true;
   } 
-  if (this.children[0]!== undefined) {
-    this.children[0].contains(target);
-  } else {
-    return false;
+  if (this.children !== null) {
+    var result = false;
+    for (var i=0; i<this.children.length; i++) { 
+      if (result) {
+        break;
+      }
+      result = this.children[i].contains(target);
+    }
+    return result;
   }
-  // this.children.contains(target);
   return false;
 };
-
-var TreeNode = function(value) {
-  this.value = value;
-  this.children = [];
-}
 
 /*
  * Complexity: What is the time complexity of the above functions?
